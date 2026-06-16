@@ -1,0 +1,32 @@
+name: Publish to GH Pages
+
+on:
+  push:
+    branches: [ "xmain" ]
+    paths:
+      - ".github/workflows/publish-ghpages.yml"
+      - "image/**/*"
+      - "json/**/*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Push to gh-pages
+      run: |
+        GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-8)
+        COMMIT_MSG=${{ github.ref_name }}-$(git log --format=%h -1)
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout --orphan gh-pages
+        git reset .
+        echo "<html><body>HI!</body></html>" >> index.html
+        touch .nojekyll
+        git add .nojekyll index.html json
+        # git add image
+        git commit -m $COMMIT_MSG
+        git push -f origin gh-pages
