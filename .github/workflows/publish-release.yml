@@ -17,8 +17,10 @@ jobs:
 
     - name: Tar Images
       run: |
-        cd image && tar -czf eyes.tar.gz eyes && mv eyes.tar.gz ../
-        cd image && tar -czf eyes-color.tar.gz eyes-color && mv eyes-color.tar.gz ../
+        cd image/
+        tar -czf eyes.tar.gz eyes
+        tar -czf eyes-color.tar.gz eyes-color
+        mv eyes*.tar.gz ../
 
     - name: Tag Release
       id: tag
