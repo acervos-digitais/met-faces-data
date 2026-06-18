@@ -2,7 +2,7 @@ name: Publish Release Assets
 
 on:
   push:
-    branches: [ "xmain" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -16,8 +16,7 @@ jobs:
         lfs: false
 
     - name: Tar Images
-      run: |
-        cd image && tar -czf eyes.tar.gz eyes && mv eyes.tar.gz ../
+      run: cd image && tar -czf eyes.tar.gz eyes && mv eyes.tar.gz ../
 
     - name: Tag Release
       id: tag
