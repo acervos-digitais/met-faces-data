@@ -13,4 +13,3 @@
 - $5\text{,}000$ ($55\%$) have faces
 - $4\text{,}498$ ($90\%$) have extractable eyes
 - $3\text{,}640$ ($80\%$) are from color images
-
