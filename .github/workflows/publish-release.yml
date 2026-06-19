@@ -21,6 +21,7 @@ jobs:
         tar -czf eyes.tar.gz eyes
         tar -czf eyes-color.tar.gz eyes-color
         tar -czf eyes-color-aligned-10.tar.gz eyes-color-aligned-10
+        tar -czf eyes-color-aligned-15.tar.gz eyes-color-aligned-15
         mv eyes*.tar.gz ../
 
     - name: Tag Release
@@ -40,4 +41,5 @@ jobs:
           eyes.tar.gz
           eyes-color.tar.gz
           eyes-color-aligned-10.tar.gz
+          eyes-color-aligned-15.tar.gz
         tag_name: ${{ steps.tag.outputs.TAG_NAME }}
